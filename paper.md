@@ -32,7 +32,7 @@ They have strong interaction between neighboring sites, and there is a global dy
 
 The one dimensional nonlinear map is given by $$x'_n(i)=f(x_n(i))$$ where $x'_n(i)$ is a virtual variable for an intermediate step. The laplacian operator for diffusion is given by 
 
-$$x_{n+1}(i) = (1 - \epsilon)x'_n(i) + \frac{\epsilon}{2} \left\{ x'_n(i+1) + x'_n(i-1) \right\}.$$
+$$x_{n+1}(i) = (1 - \epsilon)x'_n(i) + \frac{\epsilon}{2} { x'_n(i+1) + x'_n(i-1)}$$
 
 This can be written using a compact matrix form. Let's define an adjacent matrix, the elements of which are essentially defined as 
 
@@ -60,7 +60,7 @@ $$A_{ij} = 0, \;\;\; \text{otherwise}$$ So in our 4 x 4 matrix for the above exa
 And the network looks like this
 
 <div style="text-align: center;">
-    <img src="images/four_node.png" alt="Game of Life Animation" />
+    <img src="images/four_node.png" alt="four node" />
 </div>
 
 and the matrix can be represented like this
@@ -220,12 +220,12 @@ $$f(\theta) = \theta + \omega -\frac{k}{2\pi} sin(2\pi \theta)$$
  $$ \theta_{n+1}(i) = (1-\epsilon) f(\theta_n(i))+\frac{\epsilon}{2} (f(\theta_n(i+1))+f(\theta_n(i-1))) mod 1 $$
 
 <div style="text-align: center;">
-    <img src="images/circlemap_small_e_w.png" alt="Game of Life Animation" />
+    <img src="images/circlemap_small_e_w.png" alt="circle map" />
 </div>
 
 
 <div style="text-align: center;">
-    <img src="images/random_circle.png" alt="Game of Life Animation" />
+    <img src="images/random_circle.png" alt="random cicle" />
 </div>
 
 

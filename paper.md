@@ -37,8 +37,11 @@ where $x_{n+1}$ represents the value x at $i^{th}$ node, at iteration n. $\epsil
 
 ### How does the adjacency matrix work?
 
-Let us take a simple example with 4 nodes, and consider that the coupling of $x_n$ is between $x_{n+1}$ and $x_{n-1}$. Now for this matrix, we can easily say that it will have atleast two components in a row. So, we define A as $$A_{i,j} = 1, \;\;\; \text{if j = i - 1 or j = i + 1}$$
-and $$A_{ij} = 0, \;\;\; \text{otherwise}$$ So in our 4 x 4 matrix for the above example we get
+Let us take a simple example with 4 nodes, and consider that the coupling of $x_n$ is between $x_{n+1}$ and $x_{n-1}$. Now for this matrix, we can easily say that it will have atleast two components in a row. So, we define A as 
+$$A_{i,j} = 1, \;\;\; \text{if j = i - 1 or j = i + 1}$$
+
+and 
+$$A_{ij} = 0, \;\;\; \text{otherwise}$$ So in our 4 x 4 matrix for the above example we get
 
 \begin{pmatrix}
 0 & 1 &0&1\\
@@ -49,6 +52,9 @@ and $$A_{ij} = 0, \;\;\; \text{otherwise}$$ So in our 4 x 4 matrix for the above
 
 And the network looks like this
 
+<div style="text-align: center;">
+    <img src="images/four_node.png" alt="Game of Life Animation" />
+</div>
 
 ![four_node.png](attachment:images/four_node.png)
 

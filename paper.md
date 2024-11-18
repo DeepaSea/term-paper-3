@@ -30,17 +30,24 @@ They have strong interaction between neighboring sites, and there is a global dy
 # Mathematical model
 
 
-The one dimensional nonlinear map is given by $$x'_n(i)=f(x_n(i))$$ where $x'_n(i)$ is a virtual variable for an intermediate step. The laplacian operator for diffusion is given by $$x_{n+1}(i) = (1 - \epsilon)x'_n(i) + \frac{\epsilon}{2} \left\{ x'_n(i+1) + x'_n(i-1) \right\}.$$
+The one dimensional nonlinear map is given by $$x'_n(i)=f(x_n(i))$$ where $x'_n(i)$ is a virtual variable for an intermediate step. The laplacian operator for diffusion is given by 
 
-This can be written using a compact matrix form. Let's define an adjacent matrix, the elements of which are essentially defined as $$x_{n+1}(i)=(1-\epsilon)f(x_n(i))+\frac{\epsilon}{2}\sum_{j=1}^N A_{ij}f(x_n(j)),$$
+$$x_{n+1}(i) = (1 - \epsilon)x'_n(i) + \frac{\epsilon}{2} \left\{ x'_n(i+1) + x'_n(i-1) \right\}.$$
+
+This can be written using a compact matrix form. Let's define an adjacent matrix, the elements of which are essentially defined as 
+
+$$x_{n+1}(i)=(1-\epsilon)f(x_n(i))+\frac{\epsilon}{2}\sum_{j=1}^N A_{ij}f(x_n(j)),$$
+
 where $x_{n+1}$ represents the value x at $i^{th}$ node, at iteration n. $\epsilon$ is the coupling strength and the coupling is encapsulated by the adjacent matrix, A. So just by changing A, I can change the network and the pattern just by changing the matrix A, which gives us complex networks.
 
 ### How does the adjacency matrix work?
 
 Let us take a simple example with 4 nodes, and consider that the coupling of $x_n$ is between $x_{n+1}$ and $x_{n-1}$. Now for this matrix, we can easily say that it will have atleast two components in a row. So, we define A as 
+
 $$A_{i,j} = 1, \;\;\; \text{if j = i - 1 or j = i + 1}$$
 
 and 
+
 $$A_{ij} = 0, \;\;\; \text{otherwise}$$ So in our 4 x 4 matrix for the above example we get
 
 \begin{pmatrix}
@@ -56,10 +63,11 @@ And the network looks like this
     <img src="images/four_node.png" alt="Game of Life Animation" />
 </div>
 
-![four_node.png](attachment:images/four_node.png)
-
 and the matrix can be represented like this
-![adjacency_matrix.png](attachment:adjacency_matrix.png)
+
+<div style="text-align: center;">
+    <img src="images/adjacency_matrix.png" alt="Game of Life Animation" />
+</div>
 
 
 
@@ -70,7 +78,10 @@ and the matrix can be represented like this
 
 # The map
 
-First, let's consider the consider the above equation with a logistic map we looked at in class $$f(x)=1 - a x^2$$ which will give us very rich variety of patterns depending on the parameter value of a in the logistic map (local non-linearity) and $\epsilon$ for coupling strength as mentioned above.
+First, let's consider the consider the above equation with a logistic map we looked at in class
+ $$f(x)=1 - a x^2$$ 
+ 
+ which will give us very rich variety of patterns depending on the parameter value of a in the logistic map (local non-linearity) and $\epsilon$ for coupling strength as mentioned above.
 
 With changing a and $\epsilon$ we different patterns like:
 - Chimera States
@@ -80,24 +91,39 @@ With changing a and $\epsilon$ we different patterns like:
 - Pattern selection after suppression of chaos
 - Spatiotemporal intermittency
 
-Another logistic map can be $$f(x) = r x(1-x).$$ This is a prototypical model for chaos. And for phase transition models we can use the logistic map $$f(x)=tanh x$$ where we see that the map has bistable fixed points as local dynamics.
+Another logistic map can be 
+$$f(x) = r x(1-x).$$ 
+
+This is a prototypical model for chaos. And for phase transition models we can use the logistic map $$f(x)=tanh x$$ where we see that the map has bistable fixed points as local dynamics.
 
 # Some interesting patterns with different parameters
 
 ## Bifurcation diagram
-Let's first consider the widely used logistic map $$x_{n+1}=rx_n(1-x_n).$$ 
+Let's first consider the widely used logistic map
+
+$$x_{n+1}=rx_n(1-x_n).$$ 
+
 The bifurcation diagram of this is shown here
 
-![bifurcation_from_0.png](attachment:bifurcation_from_0.png)
+<div style="text-align: center;">
+    <img src="images/bifurcation_from_0.png" alt="Game of Life Animation" />
+</div>
 
 for ```R = np.linspace(2.5,4,100000)```
-
-![bifurcation_2.5_4.png](attachment:bifurcation_2.5_4.png)
+<div style="text-align: center;">
+    <img src="images/bifurcation_2.5_4.png" alt="Game of Life Animation" />
+</div>
 
 for ```R = np.linspace(3.5,4,100000)``` we have,
-![bifurcation_3.5_4.png](attachment:bifurcation_3.5_4.png)
 
-![bifurcation_neg.png](attachment:bifurcation_neg.png)
+<div style="text-align: center;">
+    <img src="images/bifurcation_3.5_4.png" alt="Game of Life Animation" />
+</div>
+
+<div style="text-align: center;">
+    <img src="images/bifurcation_neg.png" alt="Game of Life Animation" />
+</div>
+
 
 
 ## CML of simulations equations
@@ -107,77 +133,122 @@ $$f=1-ax^2$$
 
 - Pattern selection with suppression of chaos
 
-
-![suppression_of_chaos.png](attachment:suppression_of_chaos.png)
+<div style="text-align: center;">
+    <img src="images/suppression_of_chaos.png" alt="Game of Life Animation" />
+</div>
 
 - A random periodic patches in a chaotic behaviour
 
-![quad_random_chaos_period.png](attachment:quad_random_chaos_period.png)
+<div style="text-align: center;">
+    <img src="images/quad_random_chaos_period.png" alt="Game of Life Animation" />
+</div>
 
 - Frozen pattern
-![quad_frozen.png](attachment:quad_frozen.png)
+
+<div style="text-align: center;">
+    <img src="images/quad_frozen.png" alt="Game of Life Animation" />
+</div>
 
 - Just chaos
-![chaos_quad.png](attachment:chaos_quad.png)
+<div style="text-align: center;">
+    <img src="images/chaos_quad.png" alt="Game of Life Animation" />
+</div>
 
 Other patterns
-![looks_like_chimera.png](attachment:looks_like_chimera.png)
-
+<div style="text-align: center;">
+    <img src="images/looks_like_chimera.png" alt="Game of Life Animation" />
+</div>
 
 
 
 ### Logistic chaos map
 - Frozen pattern
 
-![quad_random_chaos_period.png](attachment:quad_random_chaos_period.png)
+<div style="text-align: center;">
+    <img src="images/quad_random_chaos_period.png" alt="Game of Life Animation" />
+</div>
 
 Others
-![small_e_log.png](attachment:small_e_log.png)
+<div style="text-align: center;">
+    <img src="images/small_e_log.png" alt="Game of Life Animation" />
+</div>
 
-![peirodic_with_chaos.png](attachment:peirodic_with_chaos.png)
-
-
-
-
+<div style="text-align: center;">
+    <img src="images/peirodic_with_chaos.png" alt="Game of Life Animation" />
+</div>
 
 # Different couplings
 
-We can use different procedures for coupling as well, that is my $x_{n+1}$ term. For an open-flow, we use unidirectional coupling given by $$x_{n+1}(i) = (1-\epsilon) f(x_n(i)) + \epsilon f(x_n(i-1))$$. For mean-field-type Global Coupling we have $$x_{n+1}(i) = (1-\epsilon)f(x_n(i)) + \frac{\epsilon}{N}\sum_j f(x_n(j))$$ which has adjacency matrix with is the identity $A_ij = 1, \;\; \text{for all i, j}$
+We can use different procedures for coupling as well, that is my $x_{n+1}$ term. For an open-flow, we use unidirectional coupling given by
+
+
+$$x_{n+1}(i) = (1-\epsilon) f(x_n(i)) + \epsilon f(x_n(i-1))$$
+
+For mean-field-type Global Coupling we have 
+
+$$x_{n+1}(i) = (1-\epsilon)f(x_n(i)) + \frac{\epsilon}{N}\sum_j f(x_n(j))$$
+
+which has adjacency matrix with is the identity $A_ij = 1, \;\; \text{for all i, j}$
 
 
 ## Phase transitions
 
-For this we use the function that has bistable fixed points like $$f(x)=tanh(x)$$
+For this we use the function that has bistable fixed points like 
 
-![phase_periodic.png](attachment:phase_periodic.png)
+$$f(x)=tanh(x)$$
+
+<div style="text-align: center;">
+    <img src="images/phase_periodic.png" alt="Game of Life Animation" />
+</div>
 
 for low coupling strength $\epsilon = e$ 
 
-![phase_lowe.png](attachment:phase_lowe.png)
 
-
-
+<div style="text-align: center;">
+    <img src="images/phase_lowe.png" alt="Game of Life Animation" />
+</div>
 
 ## Coupled Circle Maps
 
-The local map is given by $$f(\theta) = \theta + \omega -\frac{k}{2\pi} sin(2\pi \theta)$$, and the dynamics is defined by the equation $$ \theta_{n+1}(i) = (1-\epsilon) f(\theta_n(i))+\frac{\epsilon}{2} (f(\theta_n(i+1))+f(\theta_n(i-1))) mod 1 $$
-
-![circlemap_small_e_w.png](attachment:circlemap_small_e_w.png)
+The local map is given by 
 
 
-![random_circle.png](attachment:random_circle.png)
+$$f(\theta) = \theta + \omega -\frac{k}{2\pi} sin(2\pi \theta)$$
+
+ and the dynamics is defined by the equation 
+ 
+ $$ \theta_{n+1}(i) = (1-\epsilon) f(\theta_n(i))+\frac{\epsilon}{2} (f(\theta_n(i+1))+f(\theta_n(i-1))) mod 1 $$
+
+<div style="text-align: center;">
+    <img src="images/circlemap_small_e_w.png" alt="Game of Life Animation" />
+</div>
+
+
+<div style="text-align: center;">
+    <img src="images/random_circle.png" alt="Game of Life Animation" />
+</div>
+
+
 
 # Interesting applications
 
 I will mainly focus here on approach to the turbulence problem using coupled map lattices as I worked on the theory and computation of turbulence in my summer research. So to breifly describe the model for turbulence, we know that we have to use the non-linear Navier-Stokes equation (NSE). We will have a discrete and coupled chaotic system on a lattice. This might give insight on correlation among different parts and relations in dimensions, correlation lengths and Lyapunov exponents.
 
-The dynamics for simple diffusively CML [Kaneko 1984] is given by $$ x_{n+1}(i,j) = (1-\epsilon) f(x_n(i,j)) + \frac{\epsilon}{4}\sum_n(i,j),$$ where $\epsilon \in [0,1]$
+The dynamics for simple diffusively CML [Kaneko 1984] is given by 
+
+
+$$ x_{n+1}(i,j) = (1-\epsilon) f(x_n(i,j)) + \frac{\epsilon}{4}\sum_n(i,j),$$ 
+
+
+where $\epsilon \in [0,1]$
 
 ## Lyaponov exponent of the logistic map
 
 The plot is shown below
 
-![lyapunov_log_map.png](attachment:lyapunov_log_map.png)
+<div style="text-align: center;">
+    <img src="images/lyapunov_log_map.png" alt="Game of Life Animation" />
+</div>
 
 ### Why CMLs for Turbulence Modeling?
 
@@ -201,25 +272,56 @@ I used similar functions from the paper but in one dimension. The velocity
 
 Energy with the following parameters:
 
-![energy.png](attachment:energy.png)
 
-![the_velocity.png](attachment:the_velocity.png)
+<div style="text-align: center;">
+    <img src="images/energy.png" alt="Game of Life Animation" />
+</div>
+
+
+<div style="text-align: center;">
+    <img src="images/the_velocity.png" alt="Game of Life Animation" />
+</div>
+
 
 -  Additional data from a project I did where I worked on the effects of compressibility on turbulent fluctuations. The code is written in matlab for compressible and incompressible Navier-Stokes equation. I have attached the velocity and vorticity plot below for compressible flows.
 
-![velocity_xy.jpeg](attachment:velocity_xy.jpeg)
-![vorticity.jpeg](attachment:vorticity.jpeg)
+
+<div style="text-align: center;">
+    <img src="images/velocity_xy.jpeg" alt="Game of Life Animation" />
+</div>
+
+
+
+<div style="text-align: center;">
+    <img src="images/vorticity.jpeg" alt="Game of Life Animation" />
+</div>
+
+
 
 In a compressible flow, on increasing the viscosity of the flow in 2D we get turbulent plots. And we can also see the density plot of this for more insight. Here are the plots for a certain conditions of resolution 1024.
+<div style="text-align: center;">
+    <img src="images/1024_run5_07194_vorticity.png" alt="Game of Life Animation" />
+</div>
 
-![1024_run5_07194_vorticity.png](attachment:1024_run5_07194_vorticity.png) 
-![1024_run5_07194_ek.png](attachment:1024_run5_07194_ek.png) 
-![1024_run5_07194_ekt.png](attachment:1024_run5_07194_ekt.png) 
-![1024_run5_07194_omega.png](attachment:1024_run5_07194_omega.png) 
-![1024_run5_07194_pal.png](attachment:1024_run5_07194_pal.png) 
-![1024_run5_07194_rho.png](attachment:1024_run5_07194_rho.png)
+<div style="text-align: center;">
+    <img src="images/1024_run5_07194_ek.png" alt="Game of Life Animation" />
+</div>
 
+<div style="text-align: center;">
+    <img src="images/1024_run5_07194_ekt.png" alt="Game of Life Animation" />
+</div>
 
+<div style="text-align: center;">
+    <img src="images/1024_run5_07194_omega.png" alt="Game of Life Animation" />
+</div>
+
+<div style="text-align: center;">
+    <img src="images/1024_run5_07194_pal.png" alt="Game of Life Animation" />
+</div>
+
+<div style="text-align: center;">
+    <img src="images/1024_run5_07194_rho.png" alt="Game of Life Animation" />
+</div>
 
 # Conclusion
 

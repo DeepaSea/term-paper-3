@@ -50,7 +50,7 @@ and $$A_{ij} = 0, \;\;\; \text{otherwise}$$ So in our 4 x 4 matrix for the above
 And the network looks like this
 
 
-![four_node.png](attachment:four_node.png)
+![four_node.png](attachment:images/four_node.png)
 
 and the matrix can be represented like this
 ![adjacency_matrix.png](attachment:adjacency_matrix.png)
